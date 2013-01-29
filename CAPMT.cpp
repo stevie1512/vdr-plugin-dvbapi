@@ -95,6 +95,7 @@ bool CAPMT::get_pmt(const int adapter, const int sid, unsigned char *buft)
   }
   DEBUGLOG("%s: PMT pid=0x%X (%d)", __FUNCTION__, pmt_pid, pmt_pid);
 
+  ioctl(dmxfd, DMX_STOP);
   f.pid = pmt_pid;
   f.filter.filter[0] = 0x02;
   if (ioctl(dmxfd, DMX_SET_FILTER, &f) == -1)
